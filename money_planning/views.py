@@ -3,14 +3,34 @@ from .models import Users,Transactions
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from .forms import UsersForm, TransactionsForm
 
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import UsersSerializer, TransactionsSerializer
+
 def index(request):
     list_of_users = Users.objects.all()
     template = 'index.html'
     context={
-
     'list_of_users' : list_of_users
     }
     return render(request, template, context)
+
+# -------------for swagger ------------#
+class UsersViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for users
+    """
+    queryset = Users.objects.all()
+    serializer_class = UsersSerializer
+
+class TransactionsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for users
+    """
+    queryset = Transactions.objects.all()
+    serializer_class = TransactionsSerializer
+
+# -------------for swagger ------------#
 
 # show all users
 def users(request):
