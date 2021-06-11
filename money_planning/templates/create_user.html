@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Create user
+ {% endblock %}
+
+ {% block body %}
+ <form id = "create_user" method="POST">
+         {% csrf_token %}
+     <table>
+         {{ form.as_p }}
+     </table>
+       <button form="create_user" type="submit" class="btn btn-primary" >Create</button>
+ </form>
+  {% endblock %}

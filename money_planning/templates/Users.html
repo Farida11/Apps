@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Information about users
+ {% endblock %}
+
+ {% block body %}
+<table class="table text-center">
+  <tbody>
+  <a type= "button" class="btn btn-primary" href="{% url 'create_user' %}">Create new user</a>
+  <hr>
+  <h2 class="display-6 text-center mb-4">Users table</h2>
+{% for user in list_of_users %}
+ <tr>
+    <th>{{ user.id }}</th>
+    <td>{{ user.first_name }}</td>
+    <td>{{ user.last_name }}</td>
+    <td>{{ user.email }}</td>
+    <td><a type= "button" class="btn btn-primary" href="{% url 'user_view' user.id %}">Details</a>
+    <a type= "button" class="btn btn-primary" href="{% url 'edit_user' user.id %}">Edit</a>
+    <a type= "button" class="btn btn-primary" href="{% url 'delete_user' user.id %}">Delete</a></td>
+</tr>
+{% endfor %}
+  </tbody>
+</table>
+  {% endblock %}

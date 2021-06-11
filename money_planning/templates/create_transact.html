@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Create transition
+ {% endblock %}
+
+ {% block body %}
+ <form id = "create_transact" method="POST">
+         {% csrf_token %}
+     <table>
+         {{ form.as_p }}
+     </table>
+      <button form="create_transact" type="submit" class="btn btn-primary" >Create</button>
+ </form>
+  {% endblock %}
