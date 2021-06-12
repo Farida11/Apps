@@ -20,15 +20,46 @@
     </div>
 
 {% block body %}
-{%if group_and_fillter %}
-
+{% if group_and_filter %}
+<H1>Table: all user’s payments</h1>
+       <a type= "button" class="btn btn-primary" href="{% url 'sort_filter' 'date' %}">Transaction date</a>
+       <a type= "button" class="btn btn-primary" href="{% url 'sort_filter' 'income' %}">Transaction income</a>
+       <a type= "button" class="btn btn-primary" href="{% url 'sort_filter' 'outcome' %}">Transaction outcome</a>
+  <table class="table text-center">
+    <tbody>
+  <tr><th>Date</th><th>Name</th><th>Last Name</th><th> Email address</th><th>Sum</th>
+{% for list in two_model %}
+  <tr> <td>{{list.Date}}</td>
+   <td>{{list.Name}}</td>
+   <td>{{list.Last_Name}}</td>
+   <td>{{list.Email_address}}  </td>
+   <td>{{list.Sum}}</td></tr>
+{% endfor %}
+</tr>
+</tbody>
+</table>
+{% elif show %}
+<a type= "button" class="btn btn-primary" href="{% url 'sort_filter' 'date' %}">Transaction date</a>
+<a type= "button" class="btn btn-primary" href="{% url 'sort_filter' 'income' %}">Transaction income</a>
+<a type= "button" class="btn btn-primary" href="{% url 'sort_filter' 'outcome' %}">Transaction outcome</a>
+<table class="table text-center">
+  <tbody>
+<tr><th>Id</th><th>User Id</th><th>Amount</th><th> Date</th>
+{% for transact in list_of_transact %}
+<tr>
+  <th> {{ transact.id }}</th>
+   <td>{{transact.user_id.id}}</td>
+   <td>{{ transact.amount }}</td>
+   <td>{{ transact.date }}</td>
+ </tr>
+{% endfor %}
+</tbody>
+</table>
 {% else %}
 
 <p> </p>
 
 {% endif%}
-
-
 {% endblock %}
 </div>
 </body>

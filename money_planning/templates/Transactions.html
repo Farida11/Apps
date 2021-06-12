@@ -13,7 +13,7 @@ Information about transactions
 {% for transact in list_of_transact %}
 <tr>
   <th> {{ transact.id }}</th>
-   <td>{{transact.user_id}}</td>    
+   <td>{{transact.user_id.id}}</td>    
    <td>{{ transact.amount }}</td>
    <td>{{ transact.date }}</td>
    <td><a type= "button" class="btn btn-primary" href="{% url 'transact_view' transact.id %}">Details</a>

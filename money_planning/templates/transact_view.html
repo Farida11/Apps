@@ -8,10 +8,10 @@ Information about transaction
 <ul class="list-group">
 <li class="list-group-item active"><strong>Information about transaction:</strong></li>
    <li class="list-group-item">
-   {{ get_transact.id }}
-   {{ get_transact.user_id}}
-   {{ get_transact.amount }}
-   {{ get_transact.date }}
+   Number of transaction: {{ get_transact.id }} <br>
+   User id: {{ get_transact.user_id.id}}<br>
+   Sum of transaction: {{ get_transact.amount }}<br>
+   Date: {{ get_transact.date }}<br>
    </li>
 </ul>
   {% endblock %}
